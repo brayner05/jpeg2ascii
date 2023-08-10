@@ -4,14 +4,16 @@ public class GrayscaleToAsciiConverter implements AsciiConvertor {
     private static final char SYMBOL_LIGHT = '|';
     private static final char SYMBOL_LIGHTER = ':';
     private static final char SYMBOL_BLANK = '.';
-    private final Image grayscaleImage;
+    private GrayscaleFilter filter;
 
-    public GrayscaleToAsciiConverter(Image grayscaleImage) {
-        this.grayscaleImage = grayscaleImage;
+    public GrayscaleToAsciiConverter(GrayscaleFilter filter) {
+        this.filter = filter;
     }
 
     @Override
     public char[][] convert() {
+        filter.apply();
+        var grayscaleImage = filter.getImage();
         int width = grayscaleImage.getWidth();
         int height = grayscaleImage.getHeight();
         var pixels = grayscaleImage.getPixels();
@@ -38,5 +40,9 @@ public class GrayscaleToAsciiConverter implements AsciiConvertor {
             return SYMBOL_LIGHTER;
 
         return SYMBOL_BLANK;
+    }
+
+    void setFilter(GrayscaleFilter filter) {
+        this.filter = filter;
     }
 }

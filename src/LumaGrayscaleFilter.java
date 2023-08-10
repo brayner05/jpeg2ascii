@@ -1,13 +1,12 @@
-public class LumaGrayscaleFilter implements GrayscaleFilter {
-    private final Image image;
-
+public class LumaGrayscaleFilter extends GrayscaleFilter {
     public LumaGrayscaleFilter(Image image) {
-        this.image = image;
+        super(image);
     }
 
     @Override
     public void apply() {
-        for (var row : image.getPixels()) {
+        var pixels = getImage().getPixels();
+        for (var row : pixels) {
             for (var pixel : row) {
                 int red = pixel.getRed();
                 int blue = pixel.getBlue();

@@ -7,11 +7,9 @@ public class Main {
 
         try {
             var image = imageReader.read();
-
             GrayscaleFilter filter = new LumaGrayscaleFilter(image);
-            filter.apply();
 
-            AsciiConvertor asciiConverter = new GrayscaleToAsciiConverter(image);
+            AsciiConvertor asciiConverter = new GrayscaleToAsciiConverter(filter);
             var asciiArt = asciiConverter.convert();
 
             for (var row : asciiArt) {
