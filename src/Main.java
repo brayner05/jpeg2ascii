@@ -12,9 +12,9 @@ public class Main {
             filter.apply();
 
             var asciiConverter = new GrayscaleToAsciiConverter(image);
-            var art = asciiConverter.convert();
+            var asciiArt = asciiConverter.convert();
 
-            for (var row : art) {
+            for (var row : asciiArt) {
                 for (var col : row) {
                     System.out.print(col + " ");
                 }
