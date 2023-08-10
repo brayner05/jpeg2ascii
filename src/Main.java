@@ -11,7 +11,7 @@ public class Main {
             GrayscaleFilter filter = new LumaGrayscaleFilter(image);
             filter.apply();
 
-            var asciiConverter = new GrayscaleToAsciiConverter(image);
+            AsciiConvertor asciiConverter = new GrayscaleToAsciiConverter(image);
             var asciiArt = asciiConverter.convert();
 
             for (var row : asciiArt) {
