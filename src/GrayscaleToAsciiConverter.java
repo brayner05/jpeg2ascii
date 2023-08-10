@@ -1,4 +1,9 @@
 public class GrayscaleToAsciiConverter implements AsciiConvertor {
+    private static final char SYMBOL_DARK = '#';
+    private static final char SYMBOL_MEDIUM = '0';
+    private static final char SYMBOL_LIGHT = '|';
+    private static final char SYMBOL_LIGHTER = ':';
+    private static final char SYMBOL_BLANK = '.';
     private final Image grayscaleImage;
 
     public GrayscaleToAsciiConverter(Image grayscaleImage) {
@@ -15,20 +20,23 @@ public class GrayscaleToAsciiConverter implements AsciiConvertor {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 var gray = pixels[i][j].getRed();
-                if (gray <= 85) {
-                    asciiArt[i][j] = '#';
-                } else if (gray <= 116) {
-                    asciiArt[i][j] = '0';
-                } else if (gray <= 144) {
-                    asciiArt[i][j] = '|';
-                } else if (gray <= 200) {
-                    asciiArt[i][j] = ':';
-                } else {
-                    asciiArt[i][j] = '.';
-                }
+                asciiArt[i][j] = getAsciiSymbolForGray(gray);
             }
         }
 
         return asciiArt;
+    }
+
+    private char getAsciiSymbolForGray(int gray) {
+        if (gray <= 85)
+            return SYMBOL_DARK;
+        if (gray <= 116)
+            return SYMBOL_MEDIUM;
+        if (gray <= 144)
+            return SYMBOL_LIGHT;
+        if (gray <= 200)
+            return SYMBOL_LIGHTER;
+
+        return SYMBOL_BLANK;
     }
 }
