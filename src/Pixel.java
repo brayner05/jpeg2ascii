@@ -32,4 +32,10 @@ public class Pixel {
     public void setBlue(int blue) {
         this.blue = blue;
     }
+
+    public void setColour(int red, int green, int blue) {
+        setRed(red);
+        setGreen(green);
+        setBlue(blue);
+    }
 }

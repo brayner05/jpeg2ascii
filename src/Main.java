@@ -1,9 +1,9 @@
-import java.io.IOException;
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
-        String imagePath = Console.readString("Image path: ");
-        var imageReader = new ImageReader(imagePath);
+        String imagePath = args.length > 0 ? args[0] : Console.readString("Image path: ");
+        var imageReader = new ImageReader(new File(imagePath));
 
         try {
             var image = imageReader.read();
@@ -21,8 +21,8 @@ public class Main {
                 System.out.println('\b');
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Encountered an error: " + e.getMessage());
         }
     }
 }

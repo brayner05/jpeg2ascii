@@ -13,9 +13,7 @@ public class LumaGrayscaleFilter implements GrayscaleFilter {
                 int blue = pixel.getBlue();
                 int green = pixel.getGreen();
                 int gray = (int) (red * 0.2627 + green * 0.6780 + blue * 0.0593);
-                pixel.setRed(gray);
-                pixel.setBlue(gray);
-                pixel.setGreen(gray);
+                pixel.setColour(gray, gray, gray);
             }
         }
     }

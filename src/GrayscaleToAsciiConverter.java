@@ -14,8 +14,8 @@ public class GrayscaleToAsciiConverter implements AsciiConvertor {
     public char[][] convert() {
         int width = grayscaleImage.getWidth();
         int height = grayscaleImage.getHeight();
-        var asciiArt = new char[height][width];
         var pixels = grayscaleImage.getPixels();
+        var asciiArt = new char[height][width];
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {

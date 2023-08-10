@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class Image {
     private final Pixel[][] pixels;
     private final int width;
